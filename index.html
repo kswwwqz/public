@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание Врачей</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Расписание Врачей</h1>
+            <div class="auth-links">
+                <button id="login-button">Войти</button>
+                <button id="logout-button" style="display:none;">Выйти</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+      <div class="auth-modal" id="auth-modal">
+          <div class="modal-content">
+              <span class="close-modal" id="close-auth-modal">&times;</span>
+              <h2>Авторизация</h2>
+              <form id="auth-form">
+                  <label for="login-input">Логин:</label>
+                  <input type="text" id="login-input" required>
+
+                  <label for="password-input">Пароль:</label>
+                  <input type="password" id="password-input" required>
+
+                  <button type="submit">Войти</button>
+              </form>
+              <p id="auth-error" style="color: red; display:none;">Неверный логин или пароль</p>
+          </div>
+      </div>
+         <div class="admin-panel" id="admin-panel" style="display: none;">
+            <h2>Админ панель</h2>
+             <div class="doctor-list">
+                <h3>Список врачей</h3>
+                 <ul id="doctors-list">
+                 <!--   Сюда загрузятся врачи -->
+                 </ul>
+            </div>
+            <button id="add-doctor-btn">Добавить врача</button>
+             <div class="add-doctor-modal" id="add-doctor-modal" style="display: none;">
+                 <div class="modal-content">
+                     <span class="close-modal" id="close-add-doctor-modal">&times;</span>
+                     <h2>Добавить врача</h2>
+                     <form id="add-doctor-form">
+                         <label for="doctor-name-input">Имя:</label>
+                         <input type="text" id="doctor-name-input" required>
+
+                         <label for="doctor-specialization-input">Специализация:</label>
+                         <input type="text" id="doctor-specialization-input" required>
+
+                          <label for="doctor-phone-input">Телефон:</label>
+                         <input type="tel" id="doctor-phone-input" required>
+                        <label for="doctor-description-input">Описание:</label>
+                        <textarea id="doctor-description-input" required></textarea>
+                         <button type="submit">Добавить</button>
+                     </form>
+                 </div>
+             </div>
+            <div class="add-schedule-modal" id="add-schedule-modal" style="display: none;">
+                 <div class="modal-content">
+                     <span class="close-modal" id="close-add-schedule-modal">&times;</span>
+                     <h2>Добавить время приема</h2>
+                      <p id="selected-date-schedule"></p>
+                      <form id="add-schedule-form">
+                          <label for="doctor-select">Врач:</label>
+                         <select id="doctor-select" required>
+                         </select>
+                         <label for="time-slot-input">Время:</label>
+                           <select id="time-slot-input">
+                            <option value="10:00">10:00</option>
+                             <option value="11:00">11:00</option>
+                             <option value="12:00">12:00</option>
+                             <option value="13:00">13:00</option>
+                                  </select>
+                        <button type="submit">Добавить время</button>
+                     </form>
+                 </div>
+             </div>
+          </div>
+
+        <div class="calendar">
+            <div class="month-nav">
+                <button id="prev-month">&lt;</button>
+                <h2 id="current-month"></h2>
+                <button id="next-month">&gt;</button>
+            </div>
+            <div class="days-grid" id="days-grid">
+                <!-- Дни календаря будут добавлены JavaScript -->
+            </div>
+        </div>
+          <div class="booking-modal" id="booking-modal">
+            <div class="modal-content">
+              <span class="close-modal" id="close-booking-modal">&times;</span>
+              <h2>Запись на прием</h2>
+               <p id="selected-date"></p>
+              <form id="booking-form">
+                  <label for="patient-name">Ваше имя:</label>
+                  <input type="text" id="patient-name" required>
+
+                  <label for="patient-phone">Ваш телефон:</label>
+                  <input type="tel" id="patient-phone" required>
+                  
+                  <label for="time-slot">Выберите время:</label>
+                  <select id="time-slot">
+                   <!--  Время загружаются динамически -->
+                   </select>
+                  
+                  <button type="submit">Записаться</button>
+              </form>
+            </div>
+          </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
